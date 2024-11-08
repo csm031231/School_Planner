@@ -1,0 +1,245 @@
+:root {
+  --primary-color: #007bff;
+  --primary-color-hover: #0056b3;
+  --secondary-color: #f4f7fb;
+  --background-color: #ffffff;
+  --border-color: #ddd;
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+}
+
+/* 플래너 전체 컨테이너 스타일 */
+.planner-container {
+  padding: 30px;
+  background-color: var(--secondary-color);
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+/* 헤더 스타일 */
+.planner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* '오늘로 돌아가기' 버튼 스타일 */
+.today-button {
+  padding: 8px 20px;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 20px;
+}
+
+.today-button:hover {
+  background-color: var(--primary-color-hover);
+}
+
+/* 주간 날짜 보기 */
+.planner-week-view {
+  margin-top: 20px;
+}
+
+/* 주간 내비게이션 버튼과 현재 주 표시 */
+.planner-week-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.planner-days {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}
+
+/* 각 날짜 항목 */
+.day-column {
+  cursor: pointer;
+  padding: 10px;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: background-color 0.3s ease;
+  text-align: center;
+  width: calc(14.28% - 10px);
+  box-sizing: border-box;
+}
+
+.day-column:hover,
+.day-column.selected {
+  background-color: #f1f5f9;
+}
+
+.day-column.selected {
+  background-color: #e0f7fa;
+}
+
+.day-column h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* 월, 화, 수, 목, 금, 토, 일 순서로 배치 */
+.day-column:nth-child(1) { order: 1; }
+.day-column:nth-child(2) { order: 2; }
+.day-column:nth-child(3) { order: 3; }
+.day-column:nth-child(4) { order: 4; }
+.day-column:nth-child(5) { order: 5; }
+.day-column:nth-child(6) { order: 6; }
+.day-column:nth-child(7) { order: 7; }
+
+/* 할 일 항목 */
+.task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.task input[type="text"] {
+  flex-grow: 0;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.task input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  box-sizing: border-box;
+  margin-left: 1px;
+}
+/* 미리보기 영역 텍스트박스 */
+.task-input-preview {
+  width: 70%; /* 미리보기 텍스트박스의 너비 */
+  padding: 6px;
+  font-size: 12px;
+}
+
+/* 상세보기 영역 텍스트박스 */
+.planner-details .task input[type="text"] {
+  width: 100%; /* 상세보기 텍스트박스 너비 */
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* 날짜별 할 일 미리보기 영역 */
+.task-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* 플래너와 메모 두 가지 영역을 나누는 부분 */
+.planner-details {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap; /* flex-wrap을 사용하여 내용이 늘어날 때 아래로 내려가게 함 */
+}
+
+/* 플래너 내용 */
+.planner-detail {
+  background-color: var(--background-color);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  flex: 1; /* 할 일 영역이 늘어나면 메모 영역도 늘어날 수 있게 */
+}
+
+/* 메모 입력란 */
+.memo-section {
+  background-color: var(--background-color);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  flex: 0.4; /* 메모 영역의 크기를 상대적으로 지정 */
+  min-height: 150px; /* 메모 영역 최소 높이 설정 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 메모 영역이 늘어나면 위에서부터 내용이 채워지게 */
+}
+
+.memo-section h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.memo-section textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  height: 150px;
+  resize: none;
+  font-size: 14px;
+  box-sizing: border-box;
+  flex-grow: 1; /* 메모 영역이 늘어나면 텍스트 영역도 함께 늘어나도록 */
+}
+
+
+/* 내비게이션 화살표 버튼 스타일 */
+.nav-arrow {
+  background-color: #d3d3d3;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-arrow:hover {
+  background-color: #b0b0b0;
+}
+
+/* 현재 월 표시 스타일 */
+.current-month {
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+}
+
+/* 인증 링크 스타일 */
+.auth-links a {
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+.more-tasks {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  padding: 5px;
+}
