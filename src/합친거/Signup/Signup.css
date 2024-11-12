@@ -1,0 +1,147 @@
+/* 기본 설정 */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f3f4f6;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -150px;
+}
+
+.signup-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.signup-form h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.signup-form p {
+  color: #666;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.input-group.id-input-wrap {
+  margin-bottom: 4px; /* 에러 메시지를 위한 간격 조절 */
+  flex-direction: row;
+  align-items: center;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+/* 아이디 입력창 */
+.input-group.id-check input {
+  flex: 1; /* 남은 공간 모두 차지 */
+}
+
+.input-group input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.input-group .duplicate-check {
+  margin-left: 8px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.input-group .duplicate-check:hover {
+  background-color: #2563eb;
+}
+/* 에러 메시지가 다른 요소들 밑에 표시되도록 */
+.input-group .error-message {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+}
+
+.signup-btn, .cancel-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.signup-btn {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.signup-btn:hover {
+  background-color: #2563eb;
+}
+
+.cancel-btn {
+  background-color: #d1d5db;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background-color: #9ca3af;
+}
+
+.error-message-general {
+  margin-top: 16px;
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.error-message-general {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+.input-group.id-check {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* 버튼과 입력창 상단 정렬 */
+  gap: 8px; /* 간격 설정 */
+}
+.input-group {
+  position: relative;
+  margin-bottom: 10px; /* 입력 필드 간 간격을 줄임 */
+  display: flex;
+  flex-direction: column;
+}
+
+.error-message {
+  color: #e53e3e !important;
+  font-size: 12px;
+  margin-top: 2px; /* 에러 메시지와 입력 필드 간격을 줄임 */
+}

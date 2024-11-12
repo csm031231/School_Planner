@@ -1,0 +1,298 @@
+:root {
+  --primary-color: #007bff;
+  --primary-color-hover: #0056b3;
+  --secondary-color: #f4f7fb;
+  --background-color: #ffffff;
+  --border-color: #ddd;
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+}
+
+/* 플래너 전체 컨테이너 스타일 */
+.planner-container {
+  padding: 18px;
+  background-color: var(--secondary-color);
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+/* 헤더 스타일 */
+.planner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* 주간 날짜 보기 */
+.planner-week-view {
+  margin-top: 20px;
+}
+
+.planner-days {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  margin-top: 30px; /* 필요에 따라 여백 조정 */
+}
+
+/* 각 날짜 항목 */
+.day-column {
+  cursor: pointer;
+  padding: 10px;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: background-color 0.3s ease;
+  text-align: center;
+  width: calc(14.28% - 10px);
+  box-sizing: border-box;
+}
+
+.day-column:hover,
+.day-column.selected {
+  background-color: #f1f5f9;
+}
+
+.day-column.selected {
+  background-color: #e0f7fa;
+}
+
+.day-column h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* 월, 화, 수, 목, 금, 토, 일 순서로 배치 */
+.day-column:nth-child(1) { order: 1; }
+.day-column:nth-child(2) { order: 2; }
+.day-column:nth-child(3) { order: 3; }
+.day-column:nth-child(4) { order: 4; }
+.day-column:nth-child(5) { order: 5; }
+.day-column:nth-child(6) { order: 6; }
+.day-column:nth-child(7) { order: 7; }
+
+/* 할 일 항목 */
+.task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.task input[type="text"] {
+  flex-grow: 0;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.task input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  box-sizing: border-box;
+  margin-left: 1px;
+}
+
+/* 미리보기 영역 텍스트박스 */
+.task-input-preview {
+  width: 90%; /* 미리보기 텍스트박스의 너비 */
+  padding: 6px;
+  font-size: 15px;
+}
+
+/* 상세보기 영역 텍스트박스 */
+.planner-details .task input[type="text"] {
+  width: 100%; /* 상세보기 텍스트박스 너비 */
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* 날짜별 할 일 미리보기 영역 */
+.task-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* 플래너와 메모 두 가지 영역을 나누는 부분 */
+.planner-details {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap; /* flex-wrap을 사용하여 내용이 늘어날 때 아래로 내려가게 함 */
+}
+
+/* 플래너 내용 */
+.planner-detail {
+  background-color: var(--background-color);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  flex: 1; /* 할 일 영역이 늘어나면 메모 영역도 늘어날 수 있게 */
+}
+
+/* 메모 입력란 */
+.memo-section {
+  background-color: var(--background-color);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  flex: 0.4; /* 메모 영역의 크기를 상대적으로 지정 */
+  min-height: 150px; /* 메모 영역 최소 높이 설정 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 메모 영역이 늘어나면 위에서부터 내용이 채워지게 */
+}
+
+.memo-section h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.memo-section textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  height: 150px;
+  resize: none;
+  font-size: 14px;
+  box-sizing: border-box;
+  flex-grow: 1; /* 메모 영역이 늘어나면 텍스트 영역도 함께 늘어나도록 */
+}
+
+/* 인증 링크 스타일 */
+.auth-links a {
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+.more-tasks {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  padding: 5px;
+}
+
+/* 상단 메뉴 스타일 */
+.top-menu {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  background-color: #f8f8f8;
+}
+
+.settings-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* 플래너 상세보기 텍스트박스 길이 늘리기 */
+.textarea {
+  width: 100%; /* 부모 컨테이너의 너비를 100%로 설정하여 더 넓게 표시 */
+  height: 150px; /* 필요에 따라 높이 조정 */
+  resize: vertical; /* 세로로만 크기 조절 가능 */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.planner-preview-container {
+  margin-top: 20px;  /* 플래너 미리보기 부분의 위쪽 여백을 추가 */
+}
+
+/* 주간 날짜 보기 헤더 */
+.planner-week-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  position: relative;
+}
+
+/* date-nav-container */
+.date-nav-container {
+  display: flex;
+  align-items: center; /* 수직 중앙 정렬 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  gap: 10px; /* 버튼 간격을 적절히 설정 */
+  margin: 0 auto;
+  width: 100%;
+  position: relative; /* 위치를 상대적으로 설정 */
+  top: -5px; /* 위로 이동 */
+  padding: 5px 0; /* 버튼이 너무 위쪽에 붙지 않도록 패딩 추가 */
+  margin-top: 5px; /* 위쪽에 여백 추가 */
+}
+
+.nav-arrow {
+  display: flex;
+  align-items: center; /* 수직 중앙 정렬 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  background-color: #d3d3d3;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-arrow:hover {
+  background-color: #b0b0b0;
+}
+
+.today-button {
+  padding: 8px 20px;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap; /* 텍스트가 가로로 나타나도록 설정 */
+}
+
+.today-button:hover {
+  background-color: var(--primary-color-hover);
+}
+
+.return-button-container { /* '오늘로 돌아가기' 버튼이 포함된 컨테이너 클래스 */
+  position: relative; /* 또는 'absolute' */
+  z-index: 1; /* 오늘로 돌아가기 버튼 컨테이너를 다른 요소 위에 올리기 */
+  margin-bottom: 60px; /* 플래너 미리보기 컨테이너와의 여백 조정 */
+}
+
+.planner-preview-container {
+  margin-top: 50px; /* 오늘로 돌아가기 버튼 컨테이너 아래에 배치 */
+}

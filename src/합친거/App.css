@@ -1,0 +1,102 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.planner-header {
+  background-color: #f5f5f5;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 2px;
+}
+
+.planner-container {
+  padding-bottom: 0;
+}
+
+.auth-links {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.auth-links a {
+  margin-right: 8px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.settings-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
+  margin-left: 10px;
+}
+
+.settings-button:hover {
+  color: #007bff;
+}
+
+/* 사이드바 초기 상태 */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px; /* 사이드바는 기본적으로 화면 밖에 위치 */
+  width: 250px;
+  height: 100%;
+  background-color: #f0f0f0;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* 사이드바가 다른 요소들보다 위에 오도록 설정 */
+  transition: right 0.3s ease-in-out;
+}
+
+/* 사이드바가 열릴 때 */
+.sidebar.open {
+  right: 0 !important; /* 사이드바가 열릴 때 화면 안으로 들어옴 */
+}
+
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 20px;
+}
+
+.sidebar button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.sidebar button:hover {
+  background-color: #0056b3;
+}
+
+.close-sidebar-button {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.close-sidebar-button:hover {
+  color: #007bff;
+}
