@@ -6,6 +6,8 @@ function App() {
   const [tasks, setTasks] = useState({});
   const [newTask, setNewTask] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 여부 상태
+  const [username, setUsername] = useState(''); // 사용자 이름 상태
   const [isInputVisible, setIsInputVisible] = useState(false);
 
   const getCalendarData = (year, month) => {
@@ -78,12 +80,27 @@ function App() {
       )
     }));
   };
+
   const deleteTask = (dateStr, index) => {
     setTasks(prev => ({
       ...prev,
       [dateStr]: prev[dateStr].filter((_, i) => i !== index)
     }));
   };
+
+  const handleLogin = () => {
+    const name = prompt("사용자 이름을 입력하세요:");
+    if (name) {
+      setUsername(name);
+      setIsLoggedIn(true);
+    }
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUsername('');
+  };
+
   const { firstDay, lastDate } = getCalendarData(
     currentDate.getFullYear(),
     currentDate.getMonth() + 1
@@ -118,8 +135,21 @@ function App() {
 
   return (
     <div className="calendar-container">
-      <div className="calendar-section">
+      <header className="header">
         <h1 className="calendar-title">달력</h1>
+        <div className="login-section">
+          {isLoggedIn ? (
+            <div>
+              <span>{username}님 환영합니다!</span>
+              <button onClick={handleLogout}>로그아웃</button>
+            </div>
+          ) : (
+            <button onClick={handleLogin}>로그인/회원가입</button>
+          )}
+        </div>
+      </header>
+
+      <div className="calendar-section">
         <div className="month-selector">
           <button onClick={prevMonth}>◀</button>
           <span>{currentDate.getFullYear()}년 / {months[currentDate.getMonth()]}</span>
@@ -144,10 +174,8 @@ function App() {
                   
                   let styleClass = '';
                   if (isHoliday) {
-                    // 공휴일이면서 토요일인 경우
                     styleClass = dayOfWeek === 6 ? 'saturday-holiday' : 'holiday';
                   } else if (dayOfWeek === 6) {
-                    // 일반 토요일인 경우
                     styleClass = 'saturday';
                   }
 
@@ -180,19 +208,13 @@ function App() {
           <h2>{formatDate(selectedDate.split('-')[2])}</h2>
           {isInputVisible && (
             <form onSubmit={addTask} className="task-form">
-            <input
-              type="text"
-              value={newTask}
-              onChange={(e) => setNewTask(e.target.value)}
-              placeholder="새로운 할 일을 입력하세요"
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  addTask(e);  // Enter 키를 눌렀을 때 addTask 실행
-                }
-              }}
-            />
-          </form>
-          
+              <input
+                type="text"
+                value={newTask}
+                onChange={(e) => setNewTask(e.target.value)}
+                placeholder="새로운 할 일을 입력하세요"
+              />
+            </form>
           )}
           <div className="task-list">
             {tasks[selectedDate]?.map((task, index) => (
