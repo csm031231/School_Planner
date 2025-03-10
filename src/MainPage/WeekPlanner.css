@@ -296,3 +296,38 @@
 .planner-preview-container {
   margin-top: 50px; /* 오늘로 돌아가기 버튼 컨테이너 아래에 배치 */
 }
+
+.save-button{
+  padding: 8px 20px;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap; /* 텍스트가 가로로 나타나도록 설정 */
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  color: #908f8f;
+  font-size: 18px;
+  padding: 0 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-button:hover {
+  color: #908f8f;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
